@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: ping-pong
+    tier: frontend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: app-pod
+      labels:
+        app: ping-pong
+    spec:
+      containers:
+        - name: ping-pong
+          image: ttl.sh/identity-service:1d
+  selector:
+    matchLabels:
+      app: ping-pong
